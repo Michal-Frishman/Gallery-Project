@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 const Image = require('./src/models/Image');
-const User = require('./src/models/user');
+const User = require('./src/models/User');
 const app = express();
 
 // Middleware
