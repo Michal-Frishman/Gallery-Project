@@ -12,7 +12,6 @@ require('dotenv').config();
 const Image = require('./src/models/Image');
 const User = require('./src/models/user');
 const app = express();
-console.log('🚀 Starting backend server...');
 
 // Middleware
 app.use(cors());

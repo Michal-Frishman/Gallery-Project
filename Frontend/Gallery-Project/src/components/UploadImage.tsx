@@ -42,7 +42,7 @@ export default function UploadImage({ token }: UploadImageProps) {
     formData.append('description', description);
 
     try {
-      const res = await fetch('http://localhost:5000/api/images', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/images`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

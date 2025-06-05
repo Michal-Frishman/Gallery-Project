@@ -23,7 +23,7 @@ export default function Gallery({ token }: GalleryProps) {
   const fetchImages = async () => {
     setError(null);
     try {
-      const res = await fetch('http://localhost:5000/api/images', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/images`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error('Failed to fetch images');
@@ -36,7 +36,7 @@ export default function Gallery({ token }: GalleryProps) {
 
   const handleDelete = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/images/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/images/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
