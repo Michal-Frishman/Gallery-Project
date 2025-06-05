@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, type FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 
 interface RegisterProps {
     onRegister: (token: string) => void;
@@ -11,11 +11,6 @@ export default function Register({ onRegister, onSwitchToLogin }: RegisterProps)
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
 
-    //   const handleSubmit = async (e: FormEvent) => {
-    //     e.preventDefault();
-    //     setError(null);
-
-    //     try {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setError(null);
@@ -26,8 +21,8 @@ export default function Register({ onRegister, onSwitchToLogin }: RegisterProps)
                 password,
             });
 
-            const data = res.data; // axios מחזיר את המידע כבר בתוך data
-            onRegister(data.token); // במידה ואת שולחת token – כרגע את לא מחזירה אותו מהשרת
+            const data = res.data; 
+            onRegister(data.token); 
         } catch (err: any) {
             setError(err.response?.data?.message || err.message);
         }

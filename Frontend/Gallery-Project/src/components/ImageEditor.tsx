@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
-import Cropper, { type Area } from 'react-easy-crop';
-// import { Area } from 'react-easy-crop';
+import  { useState, useCallback } from 'react';
+import Cropper from 'react-easy-crop';
+import type { Area } from 'react-easy-crop';
 
 interface ImageEditorProps {
   imageUrl: string;
@@ -11,7 +11,7 @@ export default function ImageEditor({ imageUrl, onCancel }: ImageEditorProps) {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null);
+  const [_, setCroppedAreaPixels] = useState<Area | null>(null);
 
   const onCropComplete = useCallback((_: Area, croppedAreaPixels: Area) => {
     setCroppedAreaPixels(croppedAreaPixels);

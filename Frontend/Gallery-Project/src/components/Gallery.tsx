@@ -1,84 +1,4 @@
-// import  { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-
-// interface Image {
-//   _id: string;
-//   name: string;
-//   description: string;
-//   imageUrl: string;
-// }
-
-// interface GalleryProps {
-//   token: string;
-// }
-
-// export default function Gallery({ token }: GalleryProps) {
-//   const [images, setImages] = useState<Image[]>([]);
-//   const [error, setError] = useState<string | null>(null);
-
-//   const fetchImages = async () => {
-//     setError(null);
-//     try {
-//       const res = await fetch('http://localhost:5000/api/images', {
-//         headers: { Authorization: `Bearer ${token}` },
-//       });
-//       if (!res.ok) throw new Error('Failed to fetch images');
-//       const data: Image[] = await res.json();
-//       setImages(data);
-//     } catch (err: any) {
-//       setError(err.message);
-//     }
-//   };
-
-//   const handleDelete = async (id: string) => {
-//     try {
-//       const res = await fetch(`http://localhost:5000/api/images/${id}`, {
-//         method: 'DELETE',
-//         headers: { Authorization: `Bearer ${token}` },
-//       });
-//       if (!res.ok) throw new Error('Failed to delete image');
-//       setImages(images.filter(img => img._id !== id));
-//     } catch (err: any) {
-//       alert(err.message);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchImages();
-//   }, []);
-
-//   return (
-//     <div style={{ maxWidth: 800, margin: 'auto', padding: 20 }}>
-//       <h2>Your Images</h2>
-//       <Link to="/upload">
-//         <button style={{ marginBottom: 20 }}>Upload New Image</button>
-//       </Link>
-
-//       {error && <p style={{ color: 'red' }}>{error}</p>}
-
-//       {images.length === 0 && <p>No images found.</p>}
-
-//       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-//         {images.map(image => (
-//           <div key={image._id} style={{ border: '1px solid #ccc', padding: 10, width: 200 }}>
-//             <img
-//               src={image.imageUrl}
-//               alt={image.name}
-//               style={{ width: '100%', height: 150, objectFit: 'cover' }}
-//             />
-//             <h4>{image.name}</h4>
-//             <p>{image.description}</p>
-//             <button onClick={() => handleDelete(image._id)} style={{ color: 'red' }}>
-//               Delete
-//             </button>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 interface Image {
   _id: string;
@@ -90,7 +10,8 @@ interface Image {
 interface GalleryProps {
   token: string;
 }
-import ImageEditor from './ImageEditor'; // נתיב בהתאם לפרויקט
+import ImageEditor from './ImageEditor';
+import { Link } from 'react-router-dom';
 
 export default function Gallery({ token }: GalleryProps) {
   const [images, setImages] = useState<Image[]>([]);
